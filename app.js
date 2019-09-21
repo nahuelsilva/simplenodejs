@@ -4,12 +4,12 @@ const fs = require("fs")
 const port = 4000
 
 http.createServer((request, response) => {
-		
+
 		let dir = "public/"
 
 		let file = (request.url == "/") ? "index.html" : request.url
 			file = (file.match(/[^.]+(\.[^?#]+)?/) || [])[0]
-		
+
 		let ext = file.substring( file.lastIndexOf(".") ).toLowerCase()
 
 		let types = {
@@ -33,8 +33,10 @@ http.createServer((request, response) => {
 
 		let contentType = types[ext] || "application/octet-stream"
 
+		console.log(`recurso pedido: ${file}`)
+
 		fs.readFile( dir + file, (error, content) => {
-			
+
 			if ( error ) {
 				response.writeHead(404, { "Content-Type" : "text/plain" } )
 				response.end("ARCHIVO NO ENCONTRADO");

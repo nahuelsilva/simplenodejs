@@ -1,0 +1,9 @@
+node_modules/
+*.db
+*.tmp
+.DS_STORE
+*.ini
+*.exe
+*.env
+*.docx
+en app.js todo es const hasta q se muetre lo contrario
